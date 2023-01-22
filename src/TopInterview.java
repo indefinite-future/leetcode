@@ -52,10 +52,34 @@ public class TopInterview {
         return sum + nums[nums.length - 1];
     }
 
+//    public String longestCommonPrefix(String[] strs) {
+//        String res = "";
+//        for (int i = 0; i < strs.length; i++) {
+//            String a = strs[i];
+//            for (int j = 0; j < strs[i].length(); j++) {
+//                char temp = a.charAt()
+//                if ( char temp = strs. char )
+//            }
+//        }
+//    }
+
+    //Q.344 Reverse String
+    public void reverseString(char[] s) {
+        int i = 0;
+        int j = s.length - 1;
+        while (i < j) {
+            char temp =  s[i];
+            s[i] = s[j];
+            s[j] = temp;
+            i++;
+            j--;
+        }
+    }
 
     public static void main(String[] args) {
         TopInterview sol = new TopInterview();
-        System.out.println(sol.romanToInt("III"));
+        char[] input = {'h', 'e', 'l', 'l', 'o'};
+        sol.reverseString(input);
     }
 
 }
