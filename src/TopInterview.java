@@ -1,3 +1,8 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class TopInterview {
     //Q.1 Two Sum
     public int[] twoSum(int[] nums, int target) {
@@ -52,8 +57,9 @@ public class TopInterview {
         return sum + nums[nums.length - 1];
     }
 
-//    public String longestCommonPrefix(String[] strs) {
-//        String res = "";
+    //Q.14 Longest Common Prefix not finished
+    public String longestCommonPrefix(String[] strs) {
+        String res = "";
 //        for (int i = 0; i < strs.length; i++) {
 //            String a = strs[i];
 //            for (int j = 0; j < strs[i].length(); j++) {
@@ -61,14 +67,94 @@ public class TopInterview {
 //                if ( char temp = strs. char )
 //            }
 //        }
-//    }
+        return res;
+    }
+
+    //Q.46 Permutation not finished
+    public List<List<Integer>> permute(int[] nums) {
+        if (nums == null || nums.length == 0) return new ArrayList<>();
+
+        List<List<Integer>> answer = new ArrayList<>();
+
+        return answer;
+    }
+
+    //Q.94 Binary Tree Inorder Traversal
+    public class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode() {
+        }
+
+        TreeNode(int val) {
+            this.val = val;
+        }
+
+        TreeNode(int val, TreeNode left, TreeNode right) {
+            this.val = val;
+            this.left = left;
+            this.right = right;
+        }
+    }
+
+    public List<Integer> inorderTraversal(TreeNode root) { // bottom-top, left to right
+        List<Integer> answer = new ArrayList<>();
+        inorderHelper(root, answer);
+        return answer;
+    }
+
+    private void inorderHelper(TreeNode root, List<Integer> answer) { // recursion method with O(n)
+        if (root != null) {
+            inorderHelper(root.left, answer);
+            answer.add(root.val);
+            inorderHelper(root.right, answer);
+        }
+    }
+
+    //Q.104. Maximum Depth of Binary Tree
+    public int maxDepth(TreeNode root) {
+        if(root == null) return 0;
+        return 1+ Math.max(maxDepth(root.left),maxDepth(root.right));
+    }
+
+    //Q.144 Binary Tree Preorder Traversal
+    public List<Integer> preorderTraversal(TreeNode root) { // top-down, left to right
+        List<Integer> answer = new ArrayList<>();
+        preorderHelper(root, answer);
+        return answer;
+    }
+
+    private void preorderHelper(TreeNode root, List<Integer> answer){ // recursion method with O(n)
+        if(root != null){
+            answer.add(root.val);
+            preorderHelper(root.left,answer);
+            preorderHelper(root.right,answer);
+        }
+    }
+
+    //Q.237 Delete Node in a Linked List
+    public class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode(int x) {
+            val = x;
+        }
+    }
+
+    public void deleteNode(ListNode node) {
+        node.val = node.next.val;
+        node.next = node.next.next;
+    }
 
     //Q.344 Reverse String
     public void reverseString(char[] s) {
         int i = 0;
         int j = s.length - 1;
         while (i < j) {
-            char temp =  s[i];
+            char temp = s[i];
             s[i] = s[j];
             s[j] = temp;
             i++;
@@ -76,10 +162,30 @@ public class TopInterview {
         }
     }
 
-    public static void main(String[] args) {
-        TopInterview sol = new TopInterview();
-        char[] input = {'h', 'e', 'l', 'l', 'o'};
-        sol.reverseString(input);
+    //412 Fizz Buzz
+    public List<String> fizzBuzz(int n) {
+        List<String> answer = new ArrayList<>();
+        int i = 1;
+        while (i <= n) {
+            if (i % 5 == 0 && i % 3 == 0) {
+                answer.add("FizzBuzz");
+                i++;
+            } else if (i % 3 == 0) {
+                answer.add("Fizz");
+                i++;
+            } else if (i % 5 == 0) {
+                answer.add("Buzz");
+                i++;
+            } else {
+                answer.add(Integer.toString(i));
+                i++;
+            }
+        }
+        return answer;
     }
 
+    public static void main(String[] args) {
+        TopInterview sol = new TopInterview();
+
+    }
 }
